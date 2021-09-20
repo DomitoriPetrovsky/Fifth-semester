@@ -63,3 +63,14 @@ _xmsgs/
 isim/
 
 
+# ModelSim sistem and simulate files
+*.bak
+*.mpf
+*.mti
+*.wlf
+*.qdb
+*.qpg
+*.qtl
+*_info
+*_vmake
+
