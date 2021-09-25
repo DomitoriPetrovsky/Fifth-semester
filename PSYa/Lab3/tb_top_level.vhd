@@ -50,8 +50,8 @@ dut_2	: top_level_generate
 					scheme_out => output_2);					
 					
 	
-	input <= "110010111000";
-	c_in <= "00";
+	input <= "100100010101";
+	c_in <= "01";
 	
 	
 	

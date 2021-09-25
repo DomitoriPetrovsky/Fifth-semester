@@ -1,3 +1,14 @@
+----------------------------------------------------------------------------------
+-- Company: BSUIR
+-- Engineer: Petrovsky D.A
+-- 
+-- Module Name:    	top_function - Behavioral 
+-- Project Name: 	Lab_2
+-- Variant:			15
+--
+-- Additional Comments: 
+--
+----------------------------------------------------------------------------------
 
 library IEEE;
 use IEEE.STD_LOGIC_1164.ALL;

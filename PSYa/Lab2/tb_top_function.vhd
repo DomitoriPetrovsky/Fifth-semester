@@ -1,7 +1,7 @@
 
 library IEEE;
 use IEEE.STD_LOGIC_1164.ALL;
-
+use IEEE.numeric_std.ALL;
 
 
 entity tb_top_function is
@@ -16,7 +16,7 @@ component top_function is
 		
 end component top_function;
 
-signal input : std_logic_vector(1 to 4);
+signal input : std_logic_vector(1 to 4) := (others => '0');
 signal output : std_logic_vector(1 to 4);
 
 begin
@@ -24,11 +24,9 @@ begin
 	process
 	begin
 	
-	input <= "0000";
-	wait for 200 ns;
-	input <= "1111";
-	wait for 200 ns;
-	wait;
+	wait for 30 ns;
+	input <= std_logic_vector(unsigned(input) + 1 );
+
 	end process;
 	
 	
