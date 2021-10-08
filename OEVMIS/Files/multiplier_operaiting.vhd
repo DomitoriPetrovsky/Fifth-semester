@@ -20,11 +20,11 @@ entity multiplier_operaiting is
 end multiplier_operaiting;
 
 architecture rtl of multiplier_operaiting is
-signal rg_mn : std_logic_vector(N-2 downto 0);
-signal rg_mt : std_logic_vector(N*2-3 downto 0);
-signal rg_zn : std_logic;
-signal rg_sum : std_logic_vector(N*2-3 downto 0);
-signal temp_sum : std_logic_vector(N*2-3 downto 0);
+signal rg_mn : std_logic_vector(N-2 downto 0) := (others => '0');
+signal rg_mt : std_logic_vector(N*2-3 downto 0):= (others => '0');
+signal rg_zn : std_logic := '0';
+signal rg_sum : std_logic_vector(N*2-3 downto 0):= (others => '0');
+signal temp_sum : std_logic_vector(N*2-3 downto 0):= (others => '0');
 
 
 begin

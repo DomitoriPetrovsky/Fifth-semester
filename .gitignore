@@ -74,3 +74,6 @@ isim/
 *_info
 *_vmake
 
+# Files that generate GHDL
+*.vcd
+*.cf
