@@ -23,7 +23,7 @@ u0: process(A, B)
 	
 		mult := signed(A)*signed(B);
 			
-		C <= std_logic_vector(mult(2*N-1 downto N));
+		C <= std_logic_vector(mult(2*N-2 downto N-1));
 
 end process;
 
