@@ -25,10 +25,14 @@ signal rg_mt : std_logic_vector(N*2-3 downto 0):= (others => '0');
 signal rg_zn : std_logic := '0';
 signal rg_sum : std_logic_vector(N*2-3 downto 0):= (others => '0');
 signal temp_sum : std_logic_vector(N*2-3 downto 0):= (others => '0');
+signal result : std_logic_vector(N*2-1 downto 0) := (others => '0');
 
 
 begin
-	
+
+	do <= result;	
+
+
 load_rg_mn_and_shift: process(clk)
 		begin 	
 			if(rising_edge(clk)) then
@@ -57,19 +61,18 @@ load_rg_mt_and_shift: process(clk)
 		end process ;
 
 	
-end_of_proc: process(clk)
-		begin 	
-			if(rising_edge(clk)) then
-				if (cm_result = '1') then
-					
-					do(N*2-1) <= rg_zn;
-					do(N*2-2) <= rg_zn;
-					do(N*2-3 downto 0) <= rg_sum;
-					
-				end if;
-			end if;
-		end process ;
-		
+--end_of_proc: process(clk)
+--		begin 	
+--			if(rising_edge(clk)) then
+--				if (cm_result = '1') then
+--					
+--					result(N*2-1) <= rg_zn;
+--					result(N*2-2) <= rg_zn;
+--					result(N*2-3 downto 0) <= rg_sum;
+--					
+--				end if;
+--			end if;
+--		end process ;
 		
 
 			
@@ -91,9 +94,9 @@ proc_sum : process(clk)
 						end if;
 					elsif (cm_result = '1') then
 					
-						do(N*2-1) <= rg_zn;
-						do(N*2-2) <= rg_zn;
-						do(N*2-3 downto 0) <= rg_sum;
+						result(N*2-1) <= rg_zn;
+						result(N*2-2) <= rg_zn;
+						result(N*2-3 downto 0) <= rg_sum;
 					
 					end if;	
 					

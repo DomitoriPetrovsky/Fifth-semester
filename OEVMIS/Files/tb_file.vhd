@@ -7,47 +7,33 @@ end tb_file;
 
 architecture Behavioral of tb_file is
 
-component multiplier_operaiting is
-	generic(N  : natural); 
-	port (
-		mn : in std_logic_vector(N-1 downto 0);
-		mt : in std_logic_vector(N-1 downto 0);
-		cm_start : in std_logic;
-		cm_process : in std_logic;
-		cm_result : in std_logic;
-		clk : in std_logic;
-		do : out std_logic_vector(N*2-1 downto 0)
-		);
-		
-end component multiplier_operaiting;
-
-component multiplier_controller is 
+component multiplier is 
     generic( N : natural );
     port (
+            input_1 : std_logic_vector(N-1 downto 0);
+            input_2 : std_logic_vector(N-1 downto 0);
             REQUEST : in std_logic;
             CLK : in std_logic;
-            cm_start : out std_logic; 
-            cm_process: out std_logic; 
-            cm_result : out std_logic
+            DONE : out std_logic;
+            output_1 : out std_logic_vector(N*2-1 downto 0)
         );
-end component multiplier_controller;
+end component multiplier;
 
 
 
 constant N : natural := 8;
-signal mn : std_logic_vector(N-1 downto 0);
+signal  mn : std_logic_vector(N-1 downto 0);
 signal	mt : std_logic_vector(N-1 downto 0);
-signal	cm_start : std_logic;
-signal	cm_process : std_logic;
-signal	cm_result : std_logic;
+signal	Result : std_logic_vector(N*2-1 downto 0);
 signal	clk : std_logic;
-signal	do : std_logic_vector(N*2-1 downto 0);
-signal request : std_logic;
+signal	done : std_logic;
+signal  request : std_logic;
+
 begin
 	
 cl: process
 	begin
-	clk <= '0';
+	clk<= '0';
 	wait for 5 ns;
 	clk <= '1';
 	wait for 5 ns;
@@ -57,61 +43,40 @@ cl: process
 pr:	process
 	begin 
 	request <= '0';
-	wait for 21 ns;
-	request <= '1';
-	wait for 18 ns;
-	request <= '0'; 
-	wait;
---	cm_start <= '0';
---	cm_process <= '0';
---	cm_result <= '0';
---	wait for 10 ns;
---	
---	cm_start <='1' ;
----	wait for 20 ns;
---	
---	cm_start <= '0';
---	cm_process <= '1';
---	wait for 70 ns;
---	
---
---	cm_process <= '0';
---	cm_result <= '1';
---	wait for 10 ns;
---	
---	cm_result <= '0';
---	
---	wait;
---
-	end process;
-	
+
 	mn <= "00000010";
 	mt <= "00000010";
 	
-	
-dut_1	: multiplier_operaiting
-		generic map (N)
-		port map (mn => mn,
-					mt => mt,
-					cm_start => cm_start,
-					cm_process => cm_process,
-					cm_result => cm_result,
-					clk => clk,
-					do => do);
+	wait for 21 ns;
+	request <= '1';
+	wait for 18 ns;
+	request <= '0';
+	wait for 150 ns;
 
-dut_2	: multiplier_controller
+	mn <= "10000011";
+	mt <= "10000100";
+	
+	wait for 10 ns;
+	request <= '1';
+	wait for 18 ns;
+	request <= '0'; 
+
+	wait;
+
+	end process;
+	
+
+	
+	
+dut	: multiplier
 		generic map (N)
-		port map(REQUEST => request, 
-				CLK => clk, 
-				cm_start => cm_start, 
-				cm_process => cm_process, 
-				cm_result => cm_result);
-					
-			
-					
-	
-	
-	
+		port map (input_1 => mn,
+					input_2 => mt,
+					clk => clk,
+					output_1 => Result,
+					DONE => done,
+					request => request);
+
 	
 	
 end Behavioral;
