@@ -60,20 +60,7 @@ load_rg_mt_and_shift: process(clk)
 			end if;
 		end process ;
 
-	
---end_of_proc: process(clk)
---		begin 	
---			if(rising_edge(clk)) then
---				if (cm_result = '1') then
---					
---					result(N*2-1) <= rg_zn;
---					result(N*2-2) <= rg_zn;
---					result(N*2-3 downto 0) <= rg_sum;
---					
---				end if;
---			end if;
---		end process ;
-		
+			
 
 			
 
