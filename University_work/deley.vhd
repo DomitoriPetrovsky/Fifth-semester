@@ -13,7 +13,7 @@ end deley;
 architecture rtl of deley is
     signal reg: std_logic_vector(N-1 downto 0):= (others => '0');
 begin 
-    process(clk)g
+    process(clk)
     begin 
         if (rising_edge(clk)) then 
             reg <= input;

@@ -48,6 +48,9 @@ Thumbs.db
 *.mov
 *.wmv
 
+*.wav
+
+
 *.xise
 *.gise
 *.html
@@ -77,3 +80,9 @@ isim/
 # Files that generate GHDL
 *.vcd
 *.cf
+
+
+
+
+
+*.m
