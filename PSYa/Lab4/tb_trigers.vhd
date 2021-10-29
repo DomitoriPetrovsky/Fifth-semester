@@ -34,32 +34,32 @@ begin
 	
 	r <= '1';
 	s <= '0';
-	wait for 10 ns;
+	wait for 40 ns;
 	
 	
 	r <= '0';
 	s <= '0';
-	wait for 10 ns;
+	wait for 40 ns;
 	
 	r <= '0';
 	s <= '1';
-	wait for 10 ns;
+	wait for 40 ns;
 	
 	r <= '0';
 	s <= '0';
-	wait for 10 ns;
+	wait for 40 ns;
 	
 	r <= '1';
 	s <= '1';
-	wait for 10 ns;
+	wait for 40 ns;
 	
 	r <= '0';
 	s <= '0';
-	wait for 10 ns;
+	wait for 40 ns;
 	
 	r <= '0';
 	s <= '1';
-	wait for 10 ns;
+	wait for 40 ns;
 	
 	wait;
 	
