@@ -19,8 +19,8 @@ component iir_filter is
         CWL : natural 
     );
     port(
-        din : in std_logic_vector(IIR_IWL-1 downto 0);
-        dout : out std_logic_vector(IIR_IWL-1 downto 0);
+        din : in std_logic_vector(IWL-1 downto 0);
+        dout : out std_logic_vector(IWL-1 downto 0);
         coeffs_B : in VECTOR_OF_STD_L_V;
         coeffs_A : in VECTOR_OF_STD_L_V;
         reset : in std_logic;
@@ -43,7 +43,7 @@ begin
     begin
         clk <= '0';
         wait for 10 ns;
-        clk <= '1'
+        clk <= '1';
         wait for 10 ns;
     end process;
     
@@ -52,7 +52,8 @@ begin
     begin
         if rising_edge(clk) then
             if flag ='0' then 
-                input(IIR_WL-2 downto 0) <= (others => '1');            
+                input(IIR_IWL-2 downto 0) <= (others => '1');
+				flag <= '1';
             else 
                 input <= (others => '0');
             end if;
@@ -63,10 +64,10 @@ begin
 
 
 
-    iif: iif_filter generic map(IIR_IWL, IIR_ORDER, IIR_CWL)
+iir: iir_filter generic map(IIR_IWL, IIR_ORDER, IIR_CWL)
                     port map(
                         din => input,
-                        dout => output;
+                        dout => output,
                         coeffs_B => COEFFS_B,
                         coeffs_A => COEFFS_A,
                         reset => '0',

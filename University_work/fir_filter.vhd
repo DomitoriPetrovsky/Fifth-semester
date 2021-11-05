@@ -24,8 +24,8 @@ architecture rtl of fir_filter is
     component mult_1 is
         generic(bitness : natural;
 			int_part : natural);
-        Port(A, B : in std_logic_vector(N-1 downto 0);
-            C : out std_logic_vector(N-1 downto 0));
+        Port(A, B : in std_logic_vector(bitness-1 downto 0);
+            C : out std_logic_vector(bitness-1 downto 0));
     end component mult_1;
 
     component deley is
